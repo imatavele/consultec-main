@@ -1,0 +1,157 @@
+{% extends "baseAdmin.html" %}
+{% load static %}
+{% block title %} Editar Projecto {% endblock %}
+
+{% block link1 %}nav-link active{% endblock  %}
+{% block link2 %}nav-link{% endblock  %}
+{% block link3 %}nav-link{% endblock  %}
+
+{% block Username %} Administrador {% endblock  %}
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listProject' %}">Projectos</a></li>
+              <li class="breadcrumb-item active">Editar Projecto</li>
+            </ol>
+          </div><!-- /.col -->
+          <div class="col-md-6  text-right">
+            <button onclick="window.location.href='{% url 'listEnquirer' %}'"
+                    class="btn btn-info float-right">Inqueridores</button>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="card card-info">
+
+          <form class="form-horizontal" action="{% url 'editProject' project.id_project %}" method="post">
+              {% csrf_token %}
+            <div class="card-body">
+
+                  <div class="container">
+                 <table class="table table-borderless" style="border: none">
+                    <tbody>
+                    <tr>
+                      <td colspan="3">
+                        <label for="client_name" >Nome do Cliente:</label>
+                              <input type="text" value="{{ project.client_name }}" name="client_name" class="form-control" id="client_name" placeholder="Nome do Cliente">
+                      </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <label for="project_name" >Nome do Projecto:</label>
+                                 <input type="text" value="{{ project.project_name }}" name="project_name" class="form-control" id="project_name" placeholder="Nome do Projecto">
+                        </td>
+                    </tr>
+                    <!--
+                      <tr>
+                        <td>
+                            <label for="provincia">Província:</label>
+                            <select class="form-control" name="province" id="province">
+                                <option value="{{ project.province }}">{{ project.province }}</option>
+
+                                   {% for province in provinces %}
+                                        {% if province.name != project.province%}
+                                <option value="{{ province.name }}">{{ province.name }}</option>
+                                         {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                             <td>
+                                  <label for="district" >Distrito:</label>
+                                    <select class="form-control" id="district" name="district">
+                                        <option value="{{ project.district }}">{{ project.district }}</option>
+                                         {% for district in districts %}
+                                             {% if district.name != project.district %}
+                                        <option value="{{ district.name }}">{{ district.name }}</option>
+                                             {% endif %}
+
+                                        {% endfor %}
+                                    </select>
+                             </td>
+                             <td>
+                                  <label for="localidade" >Localidade:</label>
+                                 <input type="text" value="{{ project.town }}" name="town" class="form-control" id="town" placeholder="">
+                             </td>
+                      </tr>-->
+
+					  <tr>
+
+                        <td>
+                          <label for="start-date" >Data de Início:</label>
+                          <input type="date" value="{{ project.start_date }}" name="start_date" placeholder="dd/mm/aaaa" class="form-control"/>
+                        </td>
+                        <td>
+                          <label for="end-date">Data de Fim:</label>
+                          <input type="date" value="{{ project.end_date }}" name="end_date" id="end_date" placeholder="dd/mm/aaaa" class="form-control"/>
+                        </td>
+                        <td>
+                          <label for="project_manager" >Nome do Coordenador:</label>
+
+                            <select class="form-control" id="project_manager" name="project_manager">
+                                <option value="{{ project.project_manager.id_employee }}">{{ project.project_manager.fullname }}</option>
+
+                                 {% for employee in employees %}
+                                     {% if employee.id_employee != project.project_manager.id_employee %}
+                                        <option value="{{ employee.id_employee }}">{{ employee.fullname }}</option>
+                                     {% endif %}
+
+                                        {% endfor %}
+                            </select>
+                        </td>
+                      </tr>
+					  <tr>
+
+                        <td>
+                <label for="status">Status:</label>
+
+                             <select class="form-control" id="status" name="status">
+                                        <option value="{{ project.status }}">{{ project.status }}</option>
+                                         {% for stats in status %}
+                                             {% if stats.name != project.status %}
+                                        <option value="{{ stats.name }}">{{ stats.name }}</option>
+                                             {% endif %}
+
+                                        {% endfor %}
+                                    </select>
+
+                        </td>
+
+                            <td colspan="2">
+                <label for="project_description">Descrição do Projecto:</label>
+                  <input type="text" value="{{ project.project_description }}" class="form-control" name="project_description" id="project_description" placeholder="Enter ...">
+                        </td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <div class=" float-right">
+                      <button type="submit" class="btn btn-primary ">Salvar e Terminar</button>
+                  </div>
+                  </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->

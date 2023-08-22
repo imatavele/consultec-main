@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autenticação</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+
+    <main>
+        <!-- Section -->
+        <section class="vh-lg-100 d-flex align-items-center">
+
+                <div class="row justify-content-center form-bg-image">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="signin-inner my-3 my-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                                                <div class="text-center text-md-center">
+                                <img src="../static/img/demo.png"/>
+                                <p style="margin-top: -2em">
+                                    {% if msg %}
+                                       <label class="text-danger"> {{ msg | safe }}</label>
+                                    {% else %}
+                                        <h3> Autenticação </h3>
+                                    {% endif %}                                     
+                                </p>
+
+                            </div>
+
+                            <form method="post" action="" class="mt-4">
+
+                                {% csrf_token %}
+                                <!-- Form -->
+                                <div class="form-group mb-4">
+                                    <label for="email">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user-circle"></span></span>
+                                        {{ form.username }}
+                                    </div>  
+                                </div>
+
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                                            {{ form.password }}
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                </div>
+                                <button type="submit" name="login" class="btn btn-block btn-primary">Entrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+    </main>
+</div>
+
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>

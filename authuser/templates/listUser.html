@@ -1,0 +1,118 @@
+{% extends "baseAdmin.html" %}
+{% load static %}
+{% block title %} Users {% endblock %}
+
+{% block link1 %}nav-link{% endblock  %}
+{% block link2 %}nav-link{% endblock  %}
+{% block link3 %}nav-link active{% endblock  %}
+{% block Username %} Administrador {% endblock  %}
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+             {% comment %} <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listUser' %}"> Utilizador </a></li>
+              <li class="breadc.rumb-item active"> &nbsp;  /lista de utilizadores</li>
+            </ol> {% endcomment %}
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+
+            <button type="submit" onclick="window.location.href='{% url 'addUser' %}'"
+                    class="btn btn-info float-right">Novo Utilizador</button>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Utilizadores</h3>
+                  <div id = "message" class="text-center results">
+                        {% if messages %}
+
+                        {% for message in messages %}
+                        <div class="alert alert-default-success">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                  </div>
+
+                  <script>
+                    setTimeout(function() {
+                        var divElement = document.getElementById("message");
+                        divElement.style.display = "none";
+                    }, 2500);
+                  </script>
+
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>Nome do Funcionário</th>
+                        <th>Utilizador</th>
+                        <th>Categoria</th>
+                        <th>Estado da conta</th>
+                        <th>Data de Registo</th>
+                        <th>Acções</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for user in users%}
+                      <tr>
+                         <td>{{ user.id_employee.fullname }}</td>
+                          <td>{{ user.username}} </td>
+                          <td>{{ user.category }}</td>
+                          <td>{% if user.is_active == 'true' %} Não Activo {% else %} Activo {% endif %} </td>
+                          <td>{{user.date_joined}}</td>
+                          <td>
+                            <a href="{% url 'editUser' user.id %}" class='btn btn-default btn-sm' title='Eliminar Questionario'>
+                            <i class="fas fa-edit"></i></a>
+                            <a href="{% url 'deleteUser' user.id %}" class='btn btn-default btn-sm' title='Eliminar Utilizador'>
+                            <i class="fas fa-trash"></i></a>
+                          </td>
+                      </tr>
+
+                   {% endfor %}
+                    <tr>
+                          <td colspan="9"></td>
+                          </tr>
+
+                    </tbody>
+                 </table>
+                </div>
+            {{ users.pagination }}
+        </div>
+    </div>
+  </div>
+      </div>
+    </section>
+  </div>
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->

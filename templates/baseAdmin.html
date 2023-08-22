@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.min.css' %}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+
+ {% include 'includes/navigation.html' %}
+  <!-- Navbar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link">
+          <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">CONSULTEC</span>
+      </a>
+
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+          <div class="info">
+
+              <a href="#" class="d-block text-left">PAINEL ADMINISTRATIVO</a>
+
+
+          </div>
+        </div>
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+
+            <li class="nav-item ">
+              <a href="{% url 'listProject' %}" class="{% block link1 %}{% endblock  %}">
+                <i class="nav-icon fas fa-forward"></i>
+                <p>
+                  Gestão de Projectos
+                </p>
+              </a>
+            </li> 
+            <li class="nav-item ">
+              <a href="{% url 'listEmployee' %}" class="{% block link2 %}{% endblock  %}">
+                  <i class="nav-icon fas fa-user-clock"></i>
+                  <p>
+                    Gestão de Funcionários
+                  </p>
+              </a>
+            </li> 
+            <li class="nav-item ">
+              <a href="{% url 'listUser' %}" class="{% block link3 %}{% endblock  %}">
+              <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Gestão de Utilizadores
+                </p>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a href="{% url 'logout' %}" class="nav-link">
+               <i class="nav-icon fas fa-power-off"></i>
+                <p>
+                  Sair do Sistema
+                </p>
+              </a>
+            </li>  
+          </ul>
+
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    {% block content %}{% endblock content %}
+    {% include 'includes/footer.html' %}
+</div>
+{% include 'includes/scripts.html' %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+<script>
+  if(document.getElementById("project_name")){
+    let allEmployees = [];
+    loadEmployees();
+    async function loadEmployees() {
+      const emp_url = `/projects/api/employees`;
+      const response = await fetch(emp_url)
+      const employees = await response.json()
+      if(employees.length > 0){
+        allEmployees = employees;
+        //console.log(allEmployees[0])
+        allEmployees.forEach(emp => {
+              document.getElementById("project_manager").innerHTML += 
+              `<option value="${ emp.url.split('/').reverse()[1] }">${ emp.fullname }</option>`;
+            });
+      }
+    }
+  }
+  if(document.getElementById("addProjectAreaForm") != null){
+    let provSelect = document.getElementById("prov_name_sel");
+    let districtSelect = document.getElementById("district_name_sel");
+    let postSelect = document.getElementById("post_name_sel");
+    let addProjectAreaBtn = document.getElementById("addProjectAreaBtn");
+    addProjectAreaBtn.disabled = true;
+    let smallAreaTxt = document.getElementById("small_area");
+
+    provSelect.style.display = 'none';
+    districtSelect.style.display = 'none';
+    postSelect.style.display = 'none';
+    smallAreaTxt.style.display = 'none';
+    
+    function toggleSubmitBtnDisability(value){
+      if(value.length > 0){
+        addProjectAreaBtn.disabled = false;
+      }else{
+        addProjectAreaBtn.disabled = true;
+      }
+    }
+
+    function showAreaNameSelection(){
+      let territoryLevel = document.getElementById("territory_level").value;
+      if(territoryLevel.indexOf('Provincial') > -1){
+        provSelect.style.display = '';
+        districtSelect.style.display = 'none';
+        postSelect.style.display = 'none';
+        smallAreaTxt.style.display = 'none';
+      }else if(territoryLevel.indexOf('Distrital') > -1){
+        provSelect.style.display = 'none';
+        districtSelect.style.display = '';
+        postSelect.style.display = 'none';
+        smallAreaTxt.style.display = 'none';
+      }else if(territoryLevel === 'Posto Administrativo'){
+        provSelect.style.display = 'none';
+        districtSelect.style.display = 'none';
+        postSelect.style.display = '';
+        smallAreaTxt.style.display = 'none';
+      }else{
+        provSelect.style.display = 'none';
+        districtSelect.style.display = 'none';
+        postSelect.style.display = 'none';
+        smallAreaTxt.style.display = 'none';
+        addProjectAreaBtn.disabled = true;
+        if(territoryLevel === 'Nacional'){
+          addProjectAreaBtn.disabled = false;
+        }
+        if(territoryLevel.indexOf('Menor que') > -1){
+          smallAreaTxt.style.display = '';
+        }
+      }
+    }
+  }
+
+  if(document.getElementById("province") != null){
+    let allDistricts = [];
+    let allProvinces = [];
+    
+    let provinceDistricts = [];
+    loadProvinces();
+    loadAllDistricts();
+    
+    
+    async function loadProvinces() {
+      const prov_url = `/projects/api/provinces`
+      const response = await fetch(prov_url)
+      const provs = await response.json()
+      if(provs.length > 0){
+        allProvinces = provs;
+        let provSelect = document.getElementById("province");
+        allProvinces.forEach(prov => {
+          provSelect.innerHTML += `<option value="${ prov.province }">${ prov.province }</option>`;
+        });
+      }
+    }
+    async function loadAllDistricts() {
+      const distr_url = `/projects/api/districts`
+      const response = await fetch(distr_url)
+      const districts = await response.json()
+      if(districts.length > 0){
+        allDistricts = districts;
+      }
+    }
+    
+    /*function provinceIdFromName(name){
+      return Number(allProvinces.filter(prov => prov.name === name)[0].url.split('/').reverse()[1]);
+    }
+    function filterDistrictsByProvinceId(provId){
+      return allDistricts.filter(distr => Number(distr.id_province.split('/').reverse()[1]) === provId);
+    }*/
+    function filterDistrictsByProvinceName(provName){
+      return allDistricts.filter(distr => distr.province === provName);
+    }
+    function fillDistricts(){
+      let selectedProvince = document.getElementById("province").value;
+      document.getElementById("district").innerHTML =
+             `<option value="0">-- Selecionar --</option>`;
+      if(selectedProvince !== "0"){
+        
+        let provDistricts = filterDistrictsByProvinceName(selectedProvince);
+        
+        if(provDistricts.length > 0){
+          provDistricts.forEach(pd => {
+            document.getElementById("district").innerHTML += 
+            `<option value="${ pd.district }">${ pd.district }</option>`;
+          });
+        }
+        
+      }
+    }
+  }
+  
+</script>
+</body>
+</html>

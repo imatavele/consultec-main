@@ -1,0 +1,160 @@
+
+{% extends "baseAdmin.html" %}
+{% load static %}
+{% block title %} Projectos {% endblock %}
+
+{% block link1 %}nav-link active{% endblock  %}
+{% block link2 %}nav-link{% endblock  %}
+{% block link3 %}nav-link{% endblock  %}
+
+{% block Username %} Administrador {% endblock  %}
+
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+           {% comment %} <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listProject' %}">Home</a></li>
+              <li class="breadcrumb-item active">Lista de Projectos</li>
+            </ol> {% endcomment %}
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+
+            <button type="submit" onclick="window.location.href='{% url 'addProject' %}'"
+                    class="btn btn-info float-right">Novo Projecto</button>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Projectos</h3>
+                  <div id = "message" class="text-center results">
+                        {% if messages %}
+
+                        {% for message in messages %}
+                        <div class="alert alert-default-success">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                  </div>
+
+                  <script>
+                    setTimeout(function() {
+                        var divElement = document.getElementById("message");
+                        divElement.style.display = "none";
+                    }, 2500);
+                  </script>
+
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
+
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                  <table class="table table-head-fixed text-nowrap">
+                <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Nome do Projecto</th>
+                    <th>Coordenador</th>
+                    <!--<th>Província</th>
+                    <th>Localidade</th>-->
+                    <th>Data Início</th>
+                    <th>Data Fim</th>
+                    <th>Status</th>
+                    <th>Acções</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Item -->
+                {% if projects is not True %}
+                    {% for project in projects %}
+                    
+                        <tr>
+                            <td><span class="font-weight-normal">{{ project.client_name }}</span></td>
+                            <td><span class="font-weight-normal">{{ project.project_name}}</span></td>
+                            <td><span class="font-weight-normal">{{ project.project_manager.fullname }}</span></td>
+                            <!--<td><span class="font-weight-normal">{{ project.province }}</span></td>
+                            <td><span class="font-weight-normal">{{ project.town}}</span></td>-->
+                            <td><span class="font-weight-normal">{{ project.start_date }}</span></td>
+                            <td><span class="font-weight-normal">{{ project.end_date }}</span></td>
+                            <td><span class="font-weight-normal">{{ project.status }}</span></td>
+                            <td>
+                                <div class="btn-group">
+
+                                    <button class="btn btn-link text-gray dropdown-toggle dropdown-toggle-split m-0 p-0"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                        <span class="icon icon-sm">
+                                            <span class="fas fa-bars icon-dark"></span>
+                                        </span>
+
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      
+                                      <a class="dropdown-item edit_item"
+                                           href="{% url 'listQuiz' project.id_project %}">
+                                            <span class="fas fa-question mr-3"></span>Questionarios
+                                        </a>
+
+                                        <a class="dropdown-item edit_item"
+                                          href="{% url 'editProject' project.id_project %}">
+                                          <span class="fas fa-edit mr-2"></span>Editar Projecto
+                                        </a>
+
+                                        <a class="dropdown-item edit_item"
+                                          href="{% url 'addProjectArea' project.id_project %}">
+                                          <span class="fas fa-edit mr-2"></span>Adicionar &Aacute;rea do Projecto
+                                        </a>
+
+                                         <a class="dropdown-item edit_item" href="{% url 'listEnquirer' %}" >
+                                          <span class="fas fa-users mr-2"></span>Inqueridores
+                                        </a>
+
+                                        <a class="dropdown-item text-danger delete_item" href="{% url 'deleteProject' project.id_project %}">
+                                            <span class="fas fa-trash-alt mr-2"></span>Excluir
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    </div>
+  </div>
+      </div>
+    </section>
+  </div>
+
+{% endblock content %}

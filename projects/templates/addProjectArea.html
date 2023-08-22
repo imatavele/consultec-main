@@ -1,0 +1,126 @@
+{% extends "geoBaseAdmin.html" %}
+{% load static %}
+{% block title %} Nova &aacute;rea de projecto {% endblock %}
+
+{% block link1 %}nav-link active{% endblock  %}
+{% block link2 %}nav-link{% endblock  %}
+{% block link3 %}nav-link{% endblock  %}
+
+{% block Username %} Administrador {% endblock  %}
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listProject' %}">Projectos</a></li>
+              <li class="breadcrumb-item active">Adicionar &Aacute;rea do Projecto</li>
+            </ol>
+          </div><!-- /.col -->
+          <div class="col-md-6  text-right">
+            <button onclick="window.location.href='{% url 'listEnquirer' %}'"
+                    class="btn btn-info float-right">Inqueridores</button>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="card card-info addProjectAreaForm" id="addProjectAreaForm">
+
+            <form class="form-horizontal" action="{% url 'addProjectArea' project.id_project %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{ project.id_project }}" name="project_id" id="project_id">
+            <div class="card-body">
+
+                <div class="container">
+                    <table class="table table-borderless" style="border: none">
+                        <tbody>
+                        <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="territory_level" >N&iacute;vel territorial:</label>
+                                    <select class="form-control" name="{{ form.territory_level.name }}" onchange="showAreaNameSelection()" id="territory_level">
+                                        {% for choice in form.territory_level.field.choices %}
+                                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6" id="prov_name_sel">
+                                    <label for="prov_name" >Nome da unidade territorial:</label>
+                                    <select class="form-control" name="prov_name" id="prov_name" onchange="toggleSubmitBtnDisability(this.value)">
+                                        <option value="">-- Selecionar --</option>
+                                        {% for province in provinces %}
+                                    
+                                            <option value="{{ province.province }}">{{ province.province }}</option>
+                                    
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6" id="district_name_sel">
+                                    <label for="district_name" >Nome da unidade territorial:</label>
+                                    <select class="form-control" name="district_name" id="district_name" onchange="toggleSubmitBtnDisability(this.value)">
+                                        <option value="">-- Selecionar --</option>
+                                        {% for district in districts %}
+                                    
+                                            <option value="{{ district.district }}">{{ district.district }}</option>
+                                    
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6" id="post_name_sel">
+                                    <label for="post_name" >Nome da unidade territorial:</label>
+                                    <select class="form-control" name="post_name" id="post_name" onchange="toggleSubmitBtnDisability(this.value)">
+                                        <option value="">-- Selecionar --</option>
+                                        {% for post in posts %}
+                                    
+                                            <option value="{{ post.post }}">{{ post.post }}</option>
+                                    
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-6" id="small_area">
+                                    <label for="small_area_name" >Nome área do projecto:</label>
+                                    <input type="text" name="small_area_name" class="form-control" id="small_area_name" placeholder="Nome da área do projecto" onkeyup="toggleSubmitBtnDisability(this.value)">
+                                </div>
+                            </div>
+                        </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" id="map-row">
+                        <div class="col-md-12">
+                            {{ form.geom }}
+                            <br>
+                        </div>
+                    </div>
+                    <div class=" float-right">
+                        <button type="submit" class="btn btn-primary" id="addProjectAreaBtn">Salvar e Terminar</button>
+                    </div>
+                </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+function loadProvinces(){
+  var provinces = {{provinces|safe}}
+  console.log(provinces);
+}

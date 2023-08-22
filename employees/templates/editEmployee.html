@@ -1,0 +1,108 @@
+{% extends "baseAdmin.html" %}
+{% load static %}
+{% block title %} Edit Employee {% endblock %}
+
+{% block link1 %}nav-link{% endblock  %}
+{% block link2 %}nav-link active{% endblock  %}
+{% block link3 %}nav-link{% endblock  %}
+{% block Username %} Administrador {% endblock  %}
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listEmployee' %}">Funcionario</a></li>
+              <li class="breadcrumb-item active">Editar Funcionario</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="card card-info">
+          <!-- /.card-header -->
+          <!-- form start -->
+           <!--first line-->
+
+          <form class="form-horizontal" action="{% url 'editEmployee' employee.id_employee  %}" method="post">
+              {% csrf_token %}
+            <div class="card-body">
+
+              <div class="container">
+                 <table class="table table-borderless" style="border: none">
+                    <tbody>
+                    <tr>
+                             <td colspan="3">
+                          <label for="fullname" >Nome Completo:</label>
+                               <input type="text" value="{{ employee.fullname }}" name="fullname" class="form-control" id="fullname" placeholder="John Doe ">
+                      </td>
+
+                    </tr>
+
+                    <tr>
+                     <td>
+                            <label for="email" >Email:</label>
+                                 <input type="text" value="{{ employee.email }}" name="email" class="form-control" id="email" placeholder="email@example.com ">
+                        </td>
+
+                      <td>
+                        <label for="gender" >Genero:</label>
+                          <select class="form-control" id="gender" name="gender">
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                          </select>
+                      </td>
+                          <td>
+                        <label for="dep" >Departamento:</label>
+                          <select class="form-control" id="department" name="department">
+
+                              <option value="{{ employee.department }}">{{ employee.department }}</option>
+                               {% for dep in departments %}
+                                   {% if dep.name != employee.department %}
+                                  <option value="{{ dep.name }}">{{ dep.name }}</option>
+                                   {% endif %}
+                              {%  endfor %}
+
+                          </select>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <label for="birthdate" >Data de Nascimento:</label>
+                        <input type="date" value="{{ employee.birthdate }}" id="birthdate" name="birthdate" class="form-control"/>
+                      </td>
+
+
+                      <td>
+                      <label for="inputPassword3" >Função:</label>
+                      <input type="text" value="{{ employee.job_title }}" name="job_title" id="job_title" class="form-control"/>
+                      </td>
+                         <td>
+                          <label for="phone_number" >Cel. No:</label>
+                               <input type="text" value="{{ employee.phone_number }}" name="phone_number" class="form-control" id="phone_number" placeholder="Phone Number ">
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+               <button type="submit" class="btn btn-primary float-right">Editar Funcionario</button>
+                  </div>
+
+                  </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock content %}

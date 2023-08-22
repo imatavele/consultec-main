@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d167161-acd7-4615-90c0-6bbd5ab33be0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authuser/templates/addUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/authuser/templates/addUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authuser/templates/editUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/authuser/templates/editUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authuser/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authuser/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consultec/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/consultec/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/addEmployee.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/addEmployee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/templates/editEmployee.html" beforeDir="false" afterPath="$PROJECT_DIR$/employee/templates/editEmployee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/employee/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/addProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/addProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/editProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/editProject.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/edit_row.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/login/views.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2R3k12lNnfcSAiLJfsn1WzawNuo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/RJOSE_DEV_IT/PycharmProjects/DjangoProject/consultec/project/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\project\templates" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\accounts\templates" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\employee\templates" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\static" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\consultec" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\project\templates" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\templates\assests" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\project\templates\layouts" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\accounts\static" />
+      <recent name="C:\Users\RJOSE_DEV_IT\PycharmProjects\DjangoProject\consultec\accounts\static\images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="consultec" type="Python.DjangoServer" factoryName="Django server">
+      <module name="consultec" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="consultec.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (django-adminlte) (2)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d167161-acd7-4615-90c0-6bbd5ab33be0" name="Changes" comment="" />
+      <created>1686485934706</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686485934706</updated>
+      <workItem from="1686485935756" duration="22269000" />
+      <workItem from="1686510325421" duration="10886000" />
+      <workItem from="1686522695956" duration="14466000" />
+      <workItem from="1686605271270" duration="826000" />
+      <workItem from="1686607072561" duration="3111000" />
+      <workItem from="1686670429024" duration="9643000" />
+      <workItem from="1686759253111" duration="129000" />
+      <workItem from="1686759454119" duration="2313000" />
+      <workItem from="1686912596417" duration="708000" />
+      <workItem from="1687013469571" duration="30976000" />
+      <workItem from="1687091757037" duration="11268000" />
+      <workItem from="1687104659216" duration="9758000" />
+      <workItem from="1687118132672" duration="10604000" />
+      <workItem from="1687169802872" duration="1351000" />
+      <workItem from="1687190369068" duration="1690000" />
+      <workItem from="1687275645422" duration="23275000" />
+      <workItem from="1687328500262" duration="2826000" />
+      <workItem from="1687443077633" duration="5260000" />
+      <workItem from="1687466425547" duration="7152000" />
+      <workItem from="1687607814110" duration="4172000" />
+      <workItem from="1687632679339" duration="27982000" />
+      <workItem from="1687684308099" duration="27955000" />
+      <workItem from="1687765693373" duration="18553000" />
+      <workItem from="1688195327870" duration="3730000" />
+      <workItem from="1688890418761" duration="22668000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/enquirer/templates/listEnquirer.html</url>
+          <line>34</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/users/views.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/users/views.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

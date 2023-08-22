@@ -1,0 +1,144 @@
+{% extends "baseAdmin.html" %}
+{% load static %}
+{% block title %} Add Project {% endblock %}
+
+{% block link1 %}nav-link active{% endblock  %}
+{% block link2 %}nav-link{% endblock  %}
+{% block link3 %}nav-link{% endblock  %}
+
+{% block Username %} Administrador {% endblock  %}
+
+{% block content %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="{% url 'listProject' %}">Projectos</a></li>
+              <li class="breadcrumb-item active">Inqueridores do Projecto</li>
+            </ol>
+          </div><!-- /.col -->
+          <div class="col-md-6  text-right">
+            <button onclick="window.location.href='{% url 'addProject' %}'"
+                    class="btn btn-info float-right">Novo Projecto</button>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="card card-info">
+          <form class="form-horizontal" action="{% url 'listEnquirer' %}"  method="post">
+              {% csrf_token %}
+            <div class="card-body">
+            <div class="container">
+
+             <div id = "message" class="text-center results">
+                        {% if messages %}
+
+                        {% for message in messages %}
+                        <div class="alert alert-default-success">{{message}}</div>
+                        {% endfor %}
+                    {% endif %}
+
+                  </div>
+
+                  <script>
+                    setTimeout(function() {
+                        var divElement = document.getElementById("message");
+                        divElement.style.display = "none";
+                    }, 2500);
+                  </script>
+              <div class="form-group row">
+               <label for="inqueridor" class="col-sm-1 col-form-label text-right">{{ project.project_name }}</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="id_project" id="id_project">
+                          {% for project in projects %}
+
+                        <option value="{{ project.id_project }}">{{ project.client_name }}</option>
+                          {% endfor %}
+
+                    </select>
+                </div>
+
+                <label for="inqueridor" class="col-sm-2 col-form-label text-right">Inqueridor:</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="id_employee" id="id_employee">
+                      {% for employee in employees %}
+                          <option value="{{ employee.id_employee }}">{{ employee.fullname }}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+                  <div class="col-sm-3">
+                <button type="submit" class="btn btn-default"><span class="fa fa-plus-circle"></span>&nbsp;Adicionar</button>
+                      &nbsp;
+                        <button type="submit" class="btn btn-default"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                  </div>
+              </div>
+
+                  <section class="content">
+                    <div class="container-fluid">
+                      <!-- Small boxes (Stat box) -->
+                      <div class="row">
+                          <div class="col-12">
+                            <div class="card">
+                              <!-- /.card-header -->
+                              <div class="card-body table-responsive p-0" style="height: 200px;">
+                                <table class="table table-head-fixed text-nowrap">
+                                  <thead>
+                                    <tr>
+                                      <th>Projecto</th>
+                                      <th>Funcionário</th>
+                                        <th>Data de Registo</th>
+                                      <th>Posição</th>
+                                      <th>Acção</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                  {% for e in enquires %}
+                                    <tr>
+                                      <td>{{ e.id_project.project_name }}</td>
+                                      <td>{{ e.id_employee.fullname }} </td>
+                                         <td>{{e.date_added }}</td>
+                                         <td>{{ e.id_employee.position }}</td>
+                                        <td>
+                                            <a href="{% url 'deleteEnquirer' e.id %}" class='btn btn-default btn-sm' title='Eliminar'>
+                                            <i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+
+                                  {% endfor %}
+
+                                  </tbody>
+                                </table>
+                              </div>
+                              <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                          </div>
+                      </div>
+
+                    </div><!-- /.container-fluid -->
+                  </section>
+
+                  </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
